@@ -2,5 +2,25 @@
   <div class="logo">
     Q-app
   </div>
-
+  <button (click)="menu = !menu">
+    Menu
+  </button>
+  <div class="menu-list" [class.active]="menu">
+    <a routerLink="angular"
+       (click)="menu = !menu">
+      Angular
+    </a>
+    <a routerLink="js"
+       (click)="menu = !menu">
+      JS
+    </a>
+    <a routerLink="type-script"
+       (click)="menu = !menu">
+      TypeScript
+    </a>
+    <a routerLink="rxjs"
+       (click)="menu = !menu">
+      RxJs
+    </a>
+  </div>
 </header>
