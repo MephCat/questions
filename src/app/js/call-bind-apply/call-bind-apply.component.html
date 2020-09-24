@@ -1,0 +1,72 @@
+<h3>
+  Что такое контекст this. Как работает call, bind, apply
+</h3>
+
+<p>
+  <b>This</b> всегда указывает на контекст того где было вызвано. <br>
+  <b>Bind</b> первым передаётся контекст выполнения, дальше через ',' дополнительные параметры. <br>
+  <b>Call</b> вызывается сразу, в отличии от <b>bind</b> который возвращает новую функцию и мы её можем вызвать где нам угодно
+  <br>
+  <b>Apply</b> передаём 2 параметра котекст и массив
+</p>
+
+<pre>
+  <code>
+    function hello() &#123;
+      console.log('Hello', this);
+    &#125;
+    // window
+
+    const person = &#123;
+      name: 'Vld',
+      age: 25,
+      sayHello: hello,
+      sayHelloWindow: hello.bind(window),
+      logInfo: (phone) => &#123;
+        console.group(`$&#123;this.name &#125; info: `)
+        console.log(`Name is $&#123;this.name&#125;`);
+        console.log(`Phone is $&#123;phone &#125;`)
+        console.groupEnd()
+      &#125;
+    &#125;
+    console.log(person.sayHello());
+    // person
+    console.log(person.sayHelloWindow());
+    // window
+
+    const person2 = &#123;
+      name: 'ln',
+      age: 23
+    &#125;
+    person.logInfo.bind(person2)()
+    // ln
+
+    person.logInfo(person2, '123')()
+    // '123'
+
+    person.logInfo.call(person2, '123')
+    // '123'
+
+    person.logInfo.apply(person, ['123'])
+    // '123'
+
+
+    const arr = [1,2,3,4,5]
+
+    function multBy( arr, n) &#123;
+      return arr.map((i)=> &#123;
+        return i * n
+      &#125;)
+    &#125;
+    console.log('multBy', multBy(arr, 2))
+
+
+    Array.prototype.multBy2 = function (n) &#123;
+      return this.map(function(i)&#123;
+        return i * n
+      &#125;)
+    &#125;
+    console.log(arr.multBy2(2))
+
+  </code>
+</pre>
