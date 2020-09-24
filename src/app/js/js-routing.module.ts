@@ -5,6 +5,7 @@ import { JsComponent } from './js.component';
 import {MapPageComponent} from './map-page/map-page.component';
 import {PrototypePageComponent} from './prototype-page/prototype-page.component';
 import {CallBindApplyComponent} from './call-bind-apply/call-bind-apply.component';
+import {ClosuresComponent} from './closures/closures.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'call-bind-apply',
     component: CallBindApplyComponent
+  },
+  {
+    path: 'closures',
+    component: ClosuresComponent
   }
 ];
 

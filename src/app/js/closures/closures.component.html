@@ -1,0 +1,35 @@
+<h3>
+  Замыкания ( Closures )
+</h3>
+<p>
+  <b>Замыкания</b> - это функция внутри другой функции.
+</p>
+
+<pre>
+  <code>
+    function createCalcFunc(n) &#123;
+      return function() &#123;
+        console.log(1000 * n)
+      &#125;
+    &#125;
+
+    const calc = createCalcFunc(42)
+    calc
+    // несработает(возвращает функию но не вызывает)
+    calc()
+    // сработает, аозвращает и вызывает
+
+
+    function createIncrement(n) &#123;
+      return function (num) &#123;
+        return n + num
+      &#125;
+    &#125;
+    const addOne = createIncrement(1)
+    console.log(addOne(10))
+
+    const addTen = createIncrement(1)
+
+
+  </code>
+</pre>
