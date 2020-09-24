@@ -1,0 +1,42 @@
+<h3>
+  Что такое prototype.
+</h3>
+
+<p>
+Prototype является прототипом всех объектов, и через него можно добавлять методы для работы с объектами
+</p>
+
+<pre>
+  <code>
+    const person = &#123;
+    name: 'Max',
+    age: 25,
+    greet: () => &#123;
+        console.log('Greet!');
+      &#125;
+    &#125;;
+    // __proto__
+    console.log(person.toString());
+
+    const person2 = new Object(&#123;
+    name: 'Miha',
+    age: 28,
+    greet: () => &#123;
+        console.log('Greet Miha!');
+      &#125;
+    &#125;);
+    Object.prototype.sayHello = () => &#123;
+    console.log('Say hello');
+    &#125;;
+    person2.sayHello();
+
+
+    const lena = Object.create(person2);
+    console.log(lena);
+    // &#123;&#125;
+    // __proto__ == persona2
+    lena.name = 'Lena';
+    console.log(lena);
+    // &#123;name: 'Lena'&#125;
+  </code>
+</pre>

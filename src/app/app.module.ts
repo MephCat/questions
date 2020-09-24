@@ -20,6 +20,6 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-// ng build --prod --base-href "https://MephCat.github.io/questions"
+// ng build --prod --base-href "https://mephcat.github.io/questions/"
 // angular-cli-ghpages
 // ngh --dir=dist/questions

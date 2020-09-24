@@ -32,5 +32,13 @@ button:hover{
 }
 .container-page{
   margin-top: 60px;
+  padding: 10px 20px;
   min-height: calc(100vh - 99px);
+}
+pre{
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,.3);
+  width: fit-content;
+  padding: 10px;
+  margin: 10px 0;
 }
