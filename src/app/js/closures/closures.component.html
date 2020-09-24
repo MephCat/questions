@@ -28,8 +28,51 @@
     const addOne = createIncrement(1)
     console.log(addOne(10))
 
-    const addTen = createIncrement(1)
+    const addTen = createIncrement(10)
+    console.log(sddTen(23))
 
 
+
+    function urlGenerator(domain) &#123;
+      return function(url) &#123;
+        return `https://$&#123;url&#125;.$&#123;domain&#125;`
+      &#125;
+    &#125;
+
+    const comUrl = urlGenerator('com')
+    const ruUrl = urlGenerator('ru')
+
+
+    console.log(comUrl('google'))
+    console.log(comUrl('netflix'))
+
+    console.log(ruUrl('yandex'))
+    console.log(ruUrl('vk'))
+  </code>
+</pre>
+
+<h4>
+  Задача
+</h4>
+<pre>
+  <code>
+    /*
+      Написать свою функцию bind
+      function logPerson() &#123;
+        console.log(`Person: $&#123;this.name&#125;, $&#123;this.age&#125;, $&#123;this.job&#125;`)
+      &#125;
+    */
+
+    const person1 = &#123;name: 'Mih', age: 22, job: 'Front'&#125;
+    const person2 = &#123;name: 'Ln', age: 26, job: 'SMM'&#125;
+
+    bind(person1, logPerson)()
+    bind(person2, logPerson)()
+
+    function bind(person, fn)&#123;
+      return function(...args)&#123;
+        fn.apply(person, args)
+      &#125;
+    &#125;
   </code>
 </pre>
