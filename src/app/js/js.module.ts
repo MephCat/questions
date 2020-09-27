@@ -7,6 +7,9 @@ import { MapPageComponent } from './map-page/map-page.component';
 import { PrototypePageComponent } from './prototype-page/prototype-page.component';
 import { CallBindApplyComponent } from './call-bind-apply/call-bind-apply.component';
 import { ClosuresComponent } from './closures/closures.component';
+import { EventLoopComponent } from './event-loop/event-loop.component';
+import { PromisePageComponent } from './promise-page/promise-page.component';
+import { ObjectCreateGettersSettersComponent } from './object-create-getters-setters/object-create-getters-setters.component';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { ClosuresComponent } from './closures/closures.component';
     MapPageComponent,
     PrototypePageComponent,
     CallBindApplyComponent,
-    ClosuresComponent
+    ClosuresComponent,
+    EventLoopComponent,
+    PromisePageComponent,
+    ObjectCreateGettersSettersComponent
   ],
   imports: [
     CommonModule,

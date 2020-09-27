@@ -1,0 +1,33 @@
+<h3>
+  Event Loop
+</h3>
+<p>
+  Три хранилища <br>
+  <b>Call stack </b>- то место где выполняется код(программа), по очерёдно закидывается для выполнения<br>
+  <b>Api</b> - сюда складываются функции для ожидания выполнения (список отложеных функий)
+  <b>Callback Queue</b> - цикл (тот самый event loop) делает итерацию по списку в очереди и закидывает в call stack
+  <a href="https://latenflip.com">latenflip.com</a>
+</p>
+<pre>
+  <code>
+    // Закидывает в стек и выполняет
+    console.log('Start')
+    // Закидывает в стек и выполняет
+    console.log('Start 2')
+
+    // Регистрирует функцию которая должна выполниться и ждёт когда будет готова к выполнению
+    // после чего закидывает в стек для выполнения
+    window.setTimeout( () => &#123;
+      console.log('Inside timeout')
+    &#125;, 1000)
+
+    function to2sec()&#123;
+      console.log('after 2 sec')
+    &#125;
+    setTimeout(to2sec, 2000)
+
+    console.log('End')
+    // отработает только после открытых консоль-логов из-за попадания в Callback Queue и API
+    setTimeout(()=> console.log('insideTimeout 2'),0)
+  </code>
+</pre>

@@ -1,0 +1,58 @@
+<h3>
+  Object.create. Что такое getters, setters
+</h3>
+<p>
+
+</p>
+<pre>
+  <code>
+        // первый параметр указывает на прототип нового объекта
+    const person = Object.create(
+      &#123;
+        calculateAge() &#123;
+          console.log('Age', new Data().getFullYear() - this.birth)
+        &#125;
+      &#125;,
+      &#123;
+      // enumerable - стандартное значение false
+      // writable - стандартное значение false
+      // configurable - стандартное значение false
+      name: &#123;
+        value: 'NamePerson'
+        enumerable: true,
+        writable: true,
+        configurable: true
+      &#125;,
+      birth: &#123;
+        value: 1993
+        enumerable: false
+      &#125;,
+      age: &#123;
+        // getter - возвращает
+        get () &#123;
+          return new Data().getFullYear() - this.birth
+        &#125;,
+        // принимает значение
+        set (value) &#123;
+          console.log(value)
+        &#125;
+      &#125;
+    &#125;)
+
+    // configurable - позволяет удалять ключ из объекта
+    delete person.name
+    console.log(person)
+
+    // writable - позволяет изменять поле в объекте
+    person.name = 'newName'
+    console.log(person)
+
+    // перебор ключей включая прототип (enumerable - включает поиск по ключу)
+    for(let key in person)&#123;
+      person.hasOwnProperty(ket)?console.log('key', key)
+    &#125;
+
+
+
+  </code>
+</pre>

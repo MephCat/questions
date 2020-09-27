@@ -1,0 +1,59 @@
+<h3>
+  Promise
+</h3>
+<p>
+  <b>Promise</b> - обещания
+  <b>resolve</b> - отрабатывает когда прошло успешно
+  <b>reject</b>  - отрабатывает когда прошло не успешно
+</p>
+<pre>
+  <code>
+    // callback hell
+    console.log('Request data...')
+    setTimeout(()=> &#123;
+      console.log('preparing data...')
+      const backData = &#123;
+        server: 'aws',
+        port: 2000,
+        status: 'working'
+      &#125;
+      setTimout( () => &#123;
+        backData.modified = true
+        console.log('backData', backData)
+      &#125;, 2000)
+    &#125; ,2000)
+
+    // promise
+    const p = new Promise((resolve, reject) => &#123;
+      setTimeout(() => &#123;
+        console.log('preparing data...')
+        const backData = &#123;
+          server: 'aws',
+          port: 2000,
+          status: 'working'
+        &#125;
+        // успешное выполнение и передача объекта ответа (then)
+        resolve(backData)
+        // для обработки ошибок (catch)
+        // reject(backData)
+      &#125;, 2000)
+    &#125;)
+
+    // успешное выполнение (принимает объект ответа)
+    p.then((data) => &#123;
+      return new Promise( (resolve, reject) => &#123;
+        setTimout( () => &#123;
+                data.modified = true
+                resolve(data)
+        &#125;, 2000)
+      &#125;)
+    &#125;)
+    // обработка ошибок
+    .then( clientData => &#123;
+      console.log('clientData',clientData)
+    &#125;)
+    .catch( err => console.log(err))
+    .finally( () => console.log('finally'))
+
+  </code>
+</pre>
