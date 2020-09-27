@@ -9,6 +9,13 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
+  .logo{
+    display: flex;
+    width: fit-content;
+    text-decoration: none;
+    color: rgba(0,0,0,.8);
+  }
 }
 .menu-list{
   width: 300px;
