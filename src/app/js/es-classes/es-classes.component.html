@@ -1,0 +1,57 @@
+<h3>
+  Все о ES6 Классах (+ Практическое Применение)
+</h3>
+<p>
+
+</p>
+<pre>
+  <code>
+    class Animal &#123;
+      static type = 'ANIMAL'
+      constructor(options)&#123;
+        this.name: options.name',
+        this.age: options.age,
+        this.hasTail: options.hasTail
+      &#125;
+      voice()&#123;
+        console.log('animal')
+      &#125;
+
+      get ageInfo()&#123;
+        return this.age * 7
+      &#125;
+
+      set ageInfo(newAge)&#123;
+        this.age = newAge
+      &#125;
+
+    &#125;
+
+    const animal = new Animal(&#123;
+      name: 'Animal',
+      age: 5,
+      hasTail: true
+    &#125;)
+
+    class Cat extends Animal &#123;
+      static type = 'CAT'
+      constructor(options)&#123;
+        //для дополнения родительского класса
+        super(options)
+        this.color: options.color',
+      &#125;
+      voice()&#123;
+        super.voice()
+        console.log('cat')
+      &#125;
+    &#125;
+
+    const cat = new Animal(&#123;
+      name: 'Cat',
+      age: 7,
+      hasTail: true,
+      color: 'black'
+    &#125;)
+
+  </code>
+</pre>

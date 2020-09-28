@@ -1,0 +1,44 @@
+<h3>
+  Fetch, async, await
+</h3>
+<p>
+
+</p>
+<pre>
+  <code>
+    const delay = ms => &#123;
+      return new Promise(r => setTimeout( ()=> r(), ms))
+    &#125;
+
+    const url = 'https://jsonplaceholder.typicode.com/todos/1'
+
+    function fetchTodos() &#123;
+      return delay(2000).then(() => fetch(url))
+      .then( response => response.json())
+    &#125;
+
+    fetchTodos()
+      .then( data => &#123;
+        console.log(data)
+      &#125;)
+      .catch(err => console.log(err))
+
+    // аналог с async await(babel при обработке такого кода оборачивает в Promise)
+    async function fetchAsync()&#123;
+      try&#123;
+        await delay(2000)
+        const res = await fetch(url)
+        const data = await res.json()
+      &#125;
+      catch(e) &#123;
+        console.log('error',e)
+      &#125;
+      finally&#123;
+
+      &#125;
+    &#125;
+    fetchAsync()
+
+
+  </code>
+</pre>

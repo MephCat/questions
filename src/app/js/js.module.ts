@@ -10,6 +10,8 @@ import { ClosuresComponent } from './closures/closures.component';
 import { EventLoopComponent } from './event-loop/event-loop.component';
 import { PromisePageComponent } from './promise-page/promise-page.component';
 import { ObjectCreateGettersSettersComponent } from './object-create-getters-setters/object-create-getters-setters.component';
+import { EsClassesComponent } from './es-classes/es-classes.component';
+import { FetchAsyncAwaitComponent } from './fetch-async-await/fetch-async-await.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { ObjectCreateGettersSettersComponent } from './object-create-getters-set
     ClosuresComponent,
     EventLoopComponent,
     PromisePageComponent,
-    ObjectCreateGettersSettersComponent
+    ObjectCreateGettersSettersComponent,
+    EsClassesComponent,
+    FetchAsyncAwaitComponent
   ],
   imports: [
     CommonModule,

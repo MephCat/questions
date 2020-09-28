@@ -9,6 +9,8 @@ import {ClosuresComponent} from './closures/closures.component';
 import {EventLoopComponent} from './event-loop/event-loop.component';
 import {PromisePageComponent} from './promise-page/promise-page.component';
 import {ObjectCreateGettersSettersComponent} from './object-create-getters-setters/object-create-getters-setters.component';
+import {EsClassesComponent} from './es-classes/es-classes.component';
+import {FetchAsyncAwaitComponent} from './fetch-async-await/fetch-async-await.component';
 
 const routes: Routes = [
   {
@@ -42,6 +44,14 @@ const routes: Routes = [
   {
     path: 'object-setters-getters',
     component: ObjectCreateGettersSettersComponent
+  },
+  {
+    path: 'es6-classes',
+    component: EsClassesComponent
+  },
+  {
+    path: 'fetch',
+    component: FetchAsyncAwaitComponent
   }
 ];
 
