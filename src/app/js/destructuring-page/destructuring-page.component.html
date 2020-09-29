@@ -1,0 +1,43 @@
+<h3>
+ Дестрктуризация
+</h3>
+<p>
+
+</p>
+<pre>
+  <code>
+    function calcV(a, b) &#123;
+      return [
+        a + b,
+        undefined,
+        a * b,
+        a / b
+      ]
+    &#125;
+
+    console.log(calcV(42, 10))
+
+    // const res = calcV(42, 10)
+    // const [sum , sub ] = res
+
+    const [sun, sub = 'Not', mult ...other] = calcV(42, 10)
+
+    console.log(sun, mult, other)
+
+
+    const obj = &#123;
+      name: 'name',
+      age: 25,
+      address: &#123;
+        country: 'rus',
+        city: 'SPB'
+      &#125;
+    &#125;
+
+    const &#123;
+            name,
+            age,
+            car = 'not', address:&#123; city + country &#125;&#125; = obj
+
+  </code>
+</pre>

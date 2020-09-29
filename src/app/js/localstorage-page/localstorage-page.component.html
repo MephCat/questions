@@ -1,0 +1,33 @@
+<h3>
+  LocalStorage
+</h3>
+<p>
+
+</p>
+<pre>
+  <code>
+    const myNum = 42
+
+    localStorage.setItem('num', myNum.toString())
+    console.log(localStorage.setItem('num'))
+
+    // localStorage.removeItem('num')
+
+    // localStorage.clear()
+
+    const obj = &#123;
+      name: 'name',
+      age: 12
+    &#125;
+
+    localStorage.setItem('obj', JSON.stringify(obj))
+
+    console.log(JSON.parse(localStorage.setItem('obj')))
+
+    // отрабатывает на странице которая относиться к домену но в данный момент не активна
+    window.addEventListener('storage', event => &#123;
+      console.log(event)
+    &#125;)
+
+  </code>
+</pre>

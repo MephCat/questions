@@ -1,0 +1,41 @@
+<h3>
+  Spread, Rest
+</h3>
+<p>
+
+</p>
+<pre>
+  <code>
+    const citiesR = ['msk', 'spb', 'kzn']
+    const citiesE = ['brl', 'Prg', 'Prs']
+
+    console.log(...citiesR)
+
+    // клонирование и объединение
+    const allC = [...citiesR, 'NY', ...citiesE]
+
+    const citiesPR = &#123;
+      MSC: 20,
+      SPB: 8,
+      KZN: 5
+    &#125;
+
+    const citiesPE = &#123;
+      MSC: 26,
+      BRL: 10,
+      PRG: 3,
+      PRS: 2
+    &#125;
+
+    // склонированый объект
+    console.log(&#123;...citiesPR&#125;)
+
+    // обединиться и использует значение поля их последнего объекта
+    console.log(&#123;...citiesPR, ...citiesPE&#125;)
+
+    const num = [5,37,42,17]
+    Math.max(...num)
+
+
+  </code>
+</pre>
