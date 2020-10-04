@@ -7,6 +7,8 @@ import {ObservablePageComponent} from './observable-page/observable-page.compone
 import {SubjectPageComponent} from './subject-page/subject-page.component';
 import {MulticastedPageComponent} from './multicasted-page/multicasted-page.component';
 import {SchedulerPageComponent} from './scheduler-page/scheduler-page.component';
+import {OperatorsAndPipePageComponent} from './operators-and-pipe-page/operators-and-pipe-page.component';
+import {CreateOperatorsPageComponent} from './create-operators-page/create-operators-page.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,14 @@ const routes: Routes = [
   {
     path: 'scheduler',
     component: SchedulerPageComponent
+  },
+  {
+    path: 'operators-and-pipe',
+    component: OperatorsAndPipePageComponent
+  },
+  {
+    path: 'create-operators',
+    component: CreateOperatorsPageComponent
   }
 ];
 

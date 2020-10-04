@@ -8,6 +8,8 @@ import { ObservablePageComponent } from './observable-page/observable-page.compo
 import { SubjectPageComponent } from './subject-page/subject-page.component';
 import { MulticastedPageComponent } from './multicasted-page/multicasted-page.component';
 import { SchedulerPageComponent } from './scheduler-page/scheduler-page.component';
+import { OperatorsAndPipePageComponent } from './operators-and-pipe-page/operators-and-pipe-page.component';
+import { CreateOperatorsPageComponent } from './create-operators-page/create-operators-page.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { SchedulerPageComponent } from './scheduler-page/scheduler-page.componen
     ObservablePageComponent,
     SubjectPageComponent,
     MulticastedPageComponent,
-    SchedulerPageComponent
+    SchedulerPageComponent,
+    OperatorsAndPipePageComponent,
+    CreateOperatorsPageComponent
   ],
   imports: [
     CommonModule,

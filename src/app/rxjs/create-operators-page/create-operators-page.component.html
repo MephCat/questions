@@ -1,0 +1,55 @@
+<h3>
+  Создание  операторов
+</h3>
+<p>
+  Имеющихся в RxJS "встроенных"
+  операторов практически всегда будет достаточно,
+  за исключением редких и весьма специфических случаев.
+  Вот тогда вам и придется создавать свой собственный оператор.
+</p>
+<p>
+  Пример:
+</p>
+<pre>
+  <code>
+    const takeNth = (n: number) => &lt;T&gt;(source: Observable&lt;T&gt;) =>
+     new Observable&lt;T&gt;(observer => &#123;
+      let current = 1;
+
+      return source.subscribe(
+        vl => &#123;
+           if(current++ === n)&#123;
+              observer.next(vl);
+              observer.complete();
+           &#125;
+         &#125;,
+         err => observer.error(err),
+         () => observer.complete()
+       )
+     });
+
+    from(['Jack', 'Jane', 'Jim', 'Jason']).pipe(
+     takeNth(3)
+    ).subscribe(
+     vl => console.log(vl),
+     err => &#123;&#125;,
+     () => console.log('Completed')
+    );
+  </code>
+</pre>
+<p>
+  Также создавать операторы можно используя уже существующие.
+</p>
+<pre>
+  <code>
+    const takeNth = (n: number) => &lt;T&gt;(source: Observable&lt;T&gt;) => source.pipe(filter((value, index) => index === n - 1));
+
+    from(['Jack', 'Jane', 'Jim', 'Jason']).pipe(
+      takeNth(3)
+    ).subscribe(
+       vl => console.log(vl),
+       err => &#123;&#125;,
+       () => console.log('Completed')
+    );
+  </code>
+</pre>
