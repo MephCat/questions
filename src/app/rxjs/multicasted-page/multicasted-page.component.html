@@ -1,0 +1,78 @@
+<h3>
+  Multicasted Observable
+</h3>
+<p>
+  Ранее говорилось, что объекты RxJS Observable
+  выполняются для каждого вызова метода subscribe()
+  уникально, в отличие от RxJS Subject. Но это не совсем так.
+  При необходимости можно создать Multicasted Observable,
+  который позволяет в рамках одного и того выполнения регистрировать
+  сразу несколько обработчиков.
+</p>
+<h4>
+  multicast()
+</h4>
+<p>
+  Такие объекты создаются с помощью метода RxJS multicast(), а в их основе находятся объекты Subject.
+</p>
+<pre>
+  <code>
+    const subject = new Subject();
+    const multicasted = from([2, 4, 6]).pipe(multicast(subject));
+
+    multicasted.subscribe(vl => console.log(`1st: $&#123;vl&#125;`));
+    multicasted.subscribe(vl => console.log(`2nd: $&#123;vl&#125;`));
+
+    multicasted.connect();
+  </code>
+</pre>
+<p>
+  RxJS multicast() принимает Subject,
+  который регистрирует на себя всех "потребителей"
+  и который сам регистрируется в качестве обработчика для исходного объекта Observable.
+</p>
+<p>
+  В результате получается объект типа ConnectableObservable
+  - стандартный Observable с методом connect().
+  Именно вызов connect() инициирует выполнение исходного
+  объекта и возвращает его контекст (объект с unsubscribe()).
+</p>
+<h4>
+  refCount()
+</h4>
+<p>
+  Метод RxJS refCount() облегчает работу с ConnectableObservable.
+</p>
+<p>
+  При регистрации первого обработчика он автоматически
+  начинает выполнение исходного объекта (вызывается connect()),
+  а когда не остается ни одного "потребителя"
+  автоматически завершает его выполнение (вызывается unsubscribe()).
+</p>
+<p>
+  Так отпадает необходимость в ручном контроле таких объектов.
+</p>
+<pre>
+  <code>
+    const subject = new Subject();
+    const refCounted = interval(3).pipe(multicast(subject), refCount());
+
+    let sub1, sub2;
+
+    //выполнение Observable начинается
+    sub1 = refCounted.subscribe(vl => console.log(`1st: $&#123;vl&#125;`));
+
+    setTimeout(
+     () => sub2 = refCounted.subscribe(vl => console.log(`2nd: $&#123;vl&#125;`)),
+     500
+    );
+
+    setTimeout(() => sub1.unsubscribe(), 1500);
+
+    //выполнение Observable завершается
+    setTimeout(() => sub2.unsubscribe(), 2000);
+  </code>
+</pre>
+<p>
+  Использовать RxJS refCount() можно только с объектами ConnectableObservable.
+</p>

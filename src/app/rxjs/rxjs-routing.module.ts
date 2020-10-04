@@ -4,6 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { RxjsComponent } from './rxjs.component';
 import {AboutPageComponent} from './about-page/about-page.component';
 import {ObservablePageComponent} from './observable-page/observable-page.component';
+import {SubjectPageComponent} from './subject-page/subject-page.component';
+import {MulticastedPageComponent} from './multicasted-page/multicasted-page.component';
+import {SchedulerPageComponent} from './scheduler-page/scheduler-page.component';
 
 const routes: Routes = [
   {
@@ -17,6 +20,18 @@ const routes: Routes = [
   {
     path: 'observable',
     component: ObservablePageComponent
+  },
+  {
+    path: 'subject',
+    component: SubjectPageComponent
+  },
+  {
+    path: 'multicasted-observable',
+    component: MulticastedPageComponent
+  },
+  {
+    path: 'scheduler',
+    component: SchedulerPageComponent
   }
 ];
 

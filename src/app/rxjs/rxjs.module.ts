@@ -5,13 +5,19 @@ import { RxjsRoutingModule } from './rxjs-routing.module';
 import { RxjsComponent } from './rxjs.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { ObservablePageComponent } from './observable-page/observable-page.component';
+import { SubjectPageComponent } from './subject-page/subject-page.component';
+import { MulticastedPageComponent } from './multicasted-page/multicasted-page.component';
+import { SchedulerPageComponent } from './scheduler-page/scheduler-page.component';
 
 
 @NgModule({
   declarations: [
     RxjsComponent,
     AboutPageComponent,
-    ObservablePageComponent
+    ObservablePageComponent,
+    SubjectPageComponent,
+    MulticastedPageComponent,
+    SchedulerPageComponent
   ],
   imports: [
     CommonModule,
