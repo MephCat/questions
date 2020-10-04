@@ -14,6 +14,7 @@ import {FetchAsyncAwaitComponent} from './fetch-async-await/fetch-async-await.co
 import {LocalstoragePageComponent} from './localstorage-page/localstorage-page.component';
 import {DestructuringPageComponent} from './destructuring-page/destructuring-page.component';
 import {SpreadRestPageComponent} from './spread-rest-page/spread-rest-page.component';
+import {FetchXhrAjaxComponent} from './fetch-xhr-ajax/fetch-xhr-ajax.component';
 
 const routes: Routes = [
   {
@@ -53,8 +54,12 @@ const routes: Routes = [
     component: EsClassesComponent
   },
   {
-    path: 'fetch',
+    path: 'fetch-async-await',
     component: FetchAsyncAwaitComponent
+  },
+  {
+    path: 'fetch-xhr-ajax',
+    component: FetchXhrAjaxComponent
   },
   {
     path: 'local-storage',
@@ -67,7 +72,8 @@ const routes: Routes = [
   {
     path: 'spread-rest',
     component: SpreadRestPageComponent
-  }
+  },
+
 ];
 
 @NgModule({

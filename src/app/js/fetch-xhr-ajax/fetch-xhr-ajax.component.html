@@ -1,0 +1,83 @@
+<h3>
+  Fetch, XHR, AJAX
+</h3>
+<p>
+
+</p>
+<pre>
+  <code>
+    const url = 'https://jsonplaceholder.typicode.com/users'
+
+    // XMLHHttpRequest
+    // Get
+    const xhr = new XMLHHttpRequest()
+    xhr.responseType = 'json'
+    xhr.open('GET', url)
+    xhr.onload = () => &#123;
+      if(xhr.status >= 400) &#123;
+        console.error(xhr.response)
+      &#125; else &#123;
+        console.log(xhr.response)
+      &#125;
+    &#125;
+    xhr.send()
+    xhr.onerror = () => &#123;
+      console.log(xhr.response)
+    &#125;
+
+    // Post
+    function sendReq(method, url, body = null) &#123;
+      return new Promise((resolve, reject) => &#123;
+        const xhr = new XMLHHttpRequest()
+        xhr.open(method, url)
+        xhr.responseType = 'json'
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.onload = () => &#123;
+          if(xhr.status >= 400) &#123;
+            console.error(xhr.response)
+          &#125; else &#123;
+            console.log(xhr.response)
+          &#125;
+        &#125;
+        xhr.onerror = () => &#123;
+          console.log(xhr.response)
+        &#125;
+        xhr.send(JSON.stringify(body))
+      &#125;)
+    &#125;
+    const body = &#123;
+      name: 'Name',
+      age: 26
+    &#125;
+    sendReq('POST', url, body)
+      .then( data => console.log(data))
+      .catch( arr => console.error(err))
+    // End XMLHttpRequest
+
+    //Fetch
+    function sendRequest(method, url, body = null) &#123;
+      const headers = &#123;
+        'Content-Type': 'application/json'
+      &#125;
+      return fetch(url, &#123;
+        method: method,
+        body: JSON.stringify(body),
+        headers:
+        &#125;).then(res => &#123;
+          if(res.ok)&#123;
+            return res.json()
+          &#125; else &#123;
+            return res.json().then(err => return err)
+          &#125;
+      &#125;)
+    &#125;
+
+    sendRequest('Get', url)
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+
+    sendRequest('POST', url, body)
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+  </code>
+</pre>

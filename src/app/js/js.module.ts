@@ -15,6 +15,7 @@ import { FetchAsyncAwaitComponent } from './fetch-async-await/fetch-async-await.
 import { LocalstoragePageComponent } from './localstorage-page/localstorage-page.component';
 import { DestructuringPageComponent } from './destructuring-page/destructuring-page.component';
 import { SpreadRestPageComponent } from './spread-rest-page/spread-rest-page.component';
+import { FetchXhrAjaxComponent } from './fetch-xhr-ajax/fetch-xhr-ajax.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { SpreadRestPageComponent } from './spread-rest-page/spread-rest-page.com
     FetchAsyncAwaitComponent,
     LocalstoragePageComponent,
     DestructuringPageComponent,
-    SpreadRestPageComponent
+    SpreadRestPageComponent,
+    FetchXhrAjaxComponent
   ],
   imports: [
     CommonModule,
