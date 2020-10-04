@@ -16,7 +16,18 @@ body{
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
-ul li{
+p{
+  margin-bottom: 10px;
+}
+h1,
+h2,
+h3{
+  margin-bottom: 15px;
+}
+h4{
+  margin-bottom: 5px;
+}
+ul.not-decoration li{
   list-style: none;
   a{
     width: fit-content;

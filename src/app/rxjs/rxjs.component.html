@@ -2,5 +2,41 @@
   <h2>
     Rxjs
   </h2>
-  <router-outlet></router-outlet>
+  <ul>
+    <li>
+      <a [routerLink]="['/rxjs', 'about']">
+        О библиотеке
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/rxjs', 'observable']">
+        Объект Observable
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/rxjs']">
+        Объект Subject
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/rxjs']">
+        Multicasted Observable
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/rxjs']">
+        Scheduler
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/rxjs']">
+        Операторы и метод pipe()
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/rxjs']">
+        Создание  операторов
+      </a>
+    </li>
+  </ul>
 </div>

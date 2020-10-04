@@ -1,14 +1,13 @@
 <h3>
   Fetch, XHR, AJAX
 </h3>
-<p>
-
-</p>
+<h4>
+  XMLHHttpRequest, Ajax
+</h4>
 <pre>
   <code>
     const url = 'https://jsonplaceholder.typicode.com/users'
 
-    // XMLHHttpRequest
     // Get
     const xhr = new XMLHHttpRequest()
     xhr.responseType = 'json'
@@ -52,9 +51,15 @@
     sendReq('POST', url, body)
       .then( data => console.log(data))
       .catch( arr => console.error(err))
-    // End XMLHttpRequest
+  </code>
+</pre>
+<h4>
+  Fetch
+</h4>
+<pre>
+  <code>
+    const url = 'https://jsonplaceholder.typicode.com/users'
 
-    //Fetch
     function sendRequest(method, url, body = null) &#123;
       const headers = &#123;
         'Content-Type': 'application/json'
