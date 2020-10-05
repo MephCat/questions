@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TypeScriptComponent } from './type-script.component';
 import {TypesPageComponent} from './types-page/types-page.component';
 import {InterfacesPageComponent} from './interfaces-page/interfaces-page.component';
+import {FunctionsPageComponent} from './functions-page/functions-page.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'interfaces',
     component: InterfacesPageComponent
+  },
+  {
+    path: 'function',
+    component: FunctionsPageComponent
   }
 ];
 
