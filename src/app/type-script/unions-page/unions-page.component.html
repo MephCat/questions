@@ -1,0 +1,116 @@
+<h3>
+  Союзы (Unions)
+</h3>
+<h4>
+  Союзы с общими полями
+</h4>
+<p>
+  Если у нас есть значение, являющееся типом объединения,
+  мы можем получить доступ только
+  которые являются общими для всех типов в объединении.
+</p>
+<pre>
+  <code>
+    interface Bird &#123;
+      fly(): void;
+      layEggs(): void;
+    &#125;
+
+    interface Fish &#123;
+      swim(): void;
+      layEggs(): void;
+    &#125;
+
+    declare function getSmallPet(): Fish | Bird;
+
+    let pet = getSmallPet();
+    pet.layEggs();
+
+    pet.swim();
+  </code>
+</pre>
+<h4>
+  Дискриминационные союзы
+</h4>
+<pre>
+  <code>
+    type NetworkLoadingState = &#123;
+      state: "loading";
+    &#125;;
+
+    type NetworkFailedState = &#123;
+        state: "failed";
+        code: number;
+    &#125;;
+
+    type NetworkSuccessState = &#123;
+        state: "success";
+        response: &#123;
+        title: string;
+        duration: number;
+        summary: string;
+      &#125;;
+    &#125;;
+
+    type NetworkState =
+      | NetworkLoadingState
+      | NetworkFailedState
+      | NetworkSuccessState;
+  </code>
+</pre>
+<p>
+  У всех перечисленных выше типов есть поле с именем state, а также собственные поля: <br>
+  NetworkLoadingState, NetworkFailedState, NetworkSuccessState
+</p>
+<pre>
+  <code>
+    function logger(state: NetworkState): string &#123;
+      state.code;
+
+        switch (state.state) &#123;
+          case "loading":
+            return "Downloading...";
+          case "failed":
+            return `Error $&#123;state.code&#125; downloading`;
+          case "success":
+            return `Downloaded $&#123;state.response.title&#125; - $&#123;state.response.summary&#123;`;
+      &#125;
+    &#125;
+  </code>
+</pre>
+<h4>
+  Типы пересечений
+</h4>
+<p>
+  Тип пересечения объединяет несколько типов в один.
+  Это позволяет вам складывать существующие типы,
+  чтобы получить единый тип, обладающий всеми необходимыми функциями.
+</p>
+<pre>
+  <code>
+    interface ErrorHandling &#123;
+      success: boolean;
+      error?: &#123; message: string &#125;;
+    &#125;
+
+    interface ArtworksData &#123;
+      artworks: &#123; title: string &#125;[];
+    &#125;
+
+    interface ArtistsData &#123;
+      artists: &#123; name: string &#125;[];
+    &#125;
+
+    type ArtworksResponse = ArtworksData & ErrorHandling;
+    type ArtistsResponse = ArtistsData & ErrorHandling;
+
+    const handleArtistsResponse = (response: ArtistsResponse) => &#123;
+      if (response.error) &#123;
+        console.error(response.error.message);
+        return;
+      &#125;
+
+      console.log(response.artists);
+    &#125;;
+  </code>
+</pre>

@@ -14,3 +14,68 @@
     &#125;;
   </code>
 </pre>
+<h4>
+  this и стрелочные функции
+</h4>
+<p>
+  createCardPicker ожидает вызова Deck объекта. Это означает, что this это тип Deck.
+</p>
+<pre>
+  <code>
+    interface Card &#123;
+      card: number;
+    &#123;
+
+    interface Deck &#123;
+      suits: string[];
+      cards: number[];
+      createCardPicker(this: Deck): () => Card;
+    &#125;
+
+    let deck: Deck = &#123;
+      suits: ["hearts", "spades", "clubs", "diamonds"],
+      cards: Array(52),
+      createCardPicker: function (this: Deck) &#123;
+        return () => &#123;
+        let pickedCard = Math.floor(Math.random() * 52);
+        let pickedSuit = Math.floor(pickedCard / 13);
+
+        return &#123; suit: this.suits[pickedSuit], card: pickedCard % 13 &#125;;
+        &#125;;
+      &#125;,
+    &#125;;
+
+    let cardPicker = deck.createCardPicker();
+    let pickedCard = cardPicker();
+
+    alert("card: " + pickedCard.card + " of " + pickedCard.suit);
+  </code>
+</pre>
+<h4>
+  this параметры в обратных вызовах
+</h4>
+<p>
+</p>
+<pre>
+  <code>
+    // Во-первых, необходимо аннотировать тип обратного вызова this:
+    interface UIElement &#123;
+      addClickListener(onclick: (this: void, e: Event) => void): void;
+    &#125;
+
+    class Handler &#123;
+      info: string;
+      onClickGood = (e: Event) => &#123;
+        this.info = e.message;
+      &#125;;
+    &#125;
+
+    let h = new Handler();
+    uiElement.addClickListener(h.onClickGood);
+  </code>
+</pre>
+<!--<p>-->
+<!--  // Поскольку onClickGood указывает его this тип как void, то можно перейти к addClickListener.-->
+<!--  // Конечно, это также означает, что его нельзя использовать this.info.-->
+<!--  // Если вам нужны оба варианта, вам придется использовать стрелочную функцию:-->
+<!--</p>-->
