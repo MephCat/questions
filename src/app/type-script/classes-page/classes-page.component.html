@@ -1,0 +1,40 @@
+<h3>
+  Классы
+</h3>
+<p>
+  Для определения нового класса применяется ключевое слово class:
+</p>
+<pre>
+  <code>
+    class User &#123;
+
+      id: number;
+      name: string;
+      getInfo(): string &#123;
+            return "id:" + this.id + " name:" + this.name;
+        &#125;
+    &#125;
+  </code>
+</pre>
+<h4>
+  Статические свойства и функции
+</h4>
+<p>
+  Статические функции и свойства определяются с помощью ключевого слова static:
+</p>
+<pre>
+  <code>
+    class Operation &#123;
+
+      static PI: number = 3.14;
+
+      static getSquare(radius: number): number &#123;
+            return Operation.PI * radius * radius;
+        &#125;
+    &#125;
+    let result = Operation.getSquare(30);
+    console.log("Площадь круга с радиусом 30 равна " + result);
+    let result2 = Operation.PI * 30 * 30;
+    console.log(result2);   // 2826
+  </code>
+</pre>

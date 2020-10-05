@@ -1,0 +1,100 @@
+<h3>
+  Модификаторы доступа
+</h3>
+<p>
+  Модификаторы доступа позволяют сокрыть состояние объекта
+  от внешнего доступа и управлять доступом к этому состоянию.
+  В TypeScript три модификатора:
+</p>
+<ul>
+  <li>
+    public
+  </li>
+  <li>
+    protected
+  </li>
+  <li>
+    private
+  </li>
+</ul>
+<h4>
+  private -  нельзя будет обратиться извне при создании объекта данного класса.
+</h4>
+<pre>
+  <code>
+    class User &#123;
+
+      private _name: string;
+      private _year: number;
+
+      constructor(name: string, age: number) &#123;
+          this._name = name;
+          this._year = this.setYear(age);
+        &#125;
+        public displayYear(): void &#123;
+          console.log("Год рождения: " + this._year);
+        &#125;
+        public displayName(): void &#123;
+          console.log("name: " + this._name);
+        &#125;
+        private setYear(age: number): number &#123;
+          return new Date().getFullYear() - age;
+        &#125;
+      &#125;
+
+    let tom = new User("Tom", 24);
+    tom.displayName();
+    tom.displayYear();
+    // console.log(tom._name); // нельзя обратиться, так как _name - private
+    // tom.setYear(45); // нельзя обратиться, так как функция - private
+  </code>
+</pre>
+<h4>
+  protected - во многом аналогичен private
+  свойства и методы с данным модификатором не видны из вне,
+  но к ним можно обратиться из классов-наследников:
+</h4>
+<pre>
+  <code>
+    class User &#123;
+      private name: string;
+      protected age: number;
+      constructor(name: string, age: number) &#123;
+            this.name = name;
+            this.age = age;
+      &#125;
+      public displayInfo(): void &#123;
+        console.log("name: " + this.name + "; age: " + this.age);
+      &#125;
+    &#125;
+    class Employee extends User &#123;
+      private company: string;
+      constructor(name: string, age: number, company: string) &#123;
+        super(name, age);
+        this.company = company;
+      &#125;
+      public showData(): void &#123;
+        console.log("Age: " + this.age);
+        //console.log("Name: " + this.name); // не работает, так как name - private
+      &#125;
+    &#125;
+  </code>
+</pre>
+<h4>
+  Определение свойств через конструктор
+</h4>
+<p>
+  Использование модификаторов в параметрах конструктора позволяет сократить написание кода.
+</p>
+<pre>
+  <code>
+    class User &#123;
+      constructor(private name: string, private age: number) &#123;
+      &#125;
+      public displayInfo(): void &#123;
+
+          console.log("name: " + this.name + "; age: " + this.age);
+      &#125;
+    &#125;
+  </code>
+</pre>
