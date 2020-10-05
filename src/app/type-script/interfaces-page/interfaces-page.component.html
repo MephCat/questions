@@ -1,0 +1,102 @@
+<h3>
+  Интерфейсы
+</h3>
+<p>
+Пирмер интерфейса:
+</p>
+<pre>
+  <code>
+    interface SquareConfig &#123;
+      color: string;
+      width: number;
+    &#125;
+  </code>
+</pre>
+<p>
+  Не обязательное свойство
+</p>
+<pre>
+  <code>
+    interface SquareConfig &#123;
+      color?: string;         // проверяет только на undefined
+      width: number | null;   // проверяет на null который может быть undefined
+    &#125;
+  </code>
+</pre>
+<p>
+ <b> Свойства только для чтения </b> - некоторые свойства следует изменять только при первом создании объекта.
+</p>
+<pre>
+  <code>
+    interface Point &#123;
+      readonly x: number;
+      readonly y: number;
+    &#125;
+  </code>
+</pre>
+<p>
+  Помимо описания объекта со свойствами, интерфейсы также могут описывать типы функций.
+</p>
+<p>
+  Это похоже на объявление функции с
+  указанием только списка параметров
+  и типа возвращаемого значения. Каждый
+  параметр в списке параметров требует как имени, так и типа.
+</p>
+<pre>
+  <code>
+    interface SearchFunc &#123;
+      (source: string, subString: string): boolean;
+    &#125;
+
+    mySearch: SearchFunc;
+
+    mySearch = function (src: string, sub: string) &#123;
+      let result = src.search(sub);
+      return result > -1;
+    &#125;;
+  </code>
+</pre>
+<h4>
+  Типы классов
+</h4>
+<pre>
+  <code>
+    interface ClockInterface &#123;
+      currentTime: Date;
+      setTime(d: Date): void;
+    &#125;
+
+    class Clock implements ClockInterface &#123;
+      currentTime: Date = new Date();
+        setTime(d: Date) &#123;
+        this.currentTime = d;
+      &#125;
+      constructor(h: number, m: number) &#123;&#125;
+    &#125;
+  </code>
+</pre>
+<h4>
+  Расширение интерфейсов
+</h4>
+<p>
+  Как и классы, интерфейсы могут расширять друг друга.
+  Это позволяет вам копировать элементы одного интерфейса
+  в другой, что дает вам больше гибкости в том, как
+  вы разделяете интерфейсы на повторно используемые компоненты.
+</p>
+<pre>
+  <code>
+    interface Shape &#123;
+      color: string;
+    &#125;
+
+    interface Square extends Shape &#123;
+      sideLength: number;
+    &#125;
+
+    let square = &#123;&#125; as Square;
+    square.color = "blue";
+    square.sideLength = 10;
+  </code>
+</pre>
