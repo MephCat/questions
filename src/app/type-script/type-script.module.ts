@@ -8,6 +8,8 @@ import { InterfacesPageComponent } from './interfaces-page/interfaces-page.compo
 import { FunctionsPageComponent } from './functions-page/functions-page.component';
 import { ClassesPageComponent } from './classes-page/classes-page.component';
 import { ModificatorsPageComponent } from './modificators-page/modificators-page.component';
+import { ExtendsPageComponent } from './extends-page/extends-page.component';
+import { GenericsPageComponent } from './generics-page/generics-page.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { ModificatorsPageComponent } from './modificators-page/modificators-page
     InterfacesPageComponent,
     FunctionsPageComponent,
     ClassesPageComponent,
-    ModificatorsPageComponent],
+    ModificatorsPageComponent,
+    ExtendsPageComponent,
+    GenericsPageComponent],
   imports: [
     CommonModule,
     TypeScriptRoutingModule

@@ -1,0 +1,41 @@
+<h3>
+  Дженерики
+</h3>
+<p>
+
+</p>
+<pre>
+  <code>
+    const echo = &lt;T&gt;(something: T): T => &#123;
+      return something
+    &#125;
+    const value = echo&lt;number&gt;(1)
+  </code>
+</pre>
+<p>
+  Когда использовать дженерики?
+</p>
+<ul>
+  <li>
+    <p>
+      Когда нужно указать определенный набор свойств типа
+    </p>
+<!--    <pre>-->
+<!--      <code>-->
+<!--        const getLength = &lt;T extends &#123;length: number&#125;&gt;(something: T) => &#123;-->
+<!--          return something.length-->
+<!--        &#125;-->
+<!--      </code>-->
+<!--    </pre>-->
+  </li>
+  <li>
+    <p>
+      Когда один из аргументов должен быть одним из ключей другого
+    </p>
+  </li>
+  <li>
+    <p>
+      Когда хотим указать тип по-умолчанию
+    </p>
+  </li>
+</ul>

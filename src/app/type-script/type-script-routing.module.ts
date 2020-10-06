@@ -7,6 +7,8 @@ import {InterfacesPageComponent} from './interfaces-page/interfaces-page.compone
 import {FunctionsPageComponent} from './functions-page/functions-page.component';
 import {ClassesPageComponent} from './classes-page/classes-page.component';
 import {ModificatorsPageComponent} from './modificators-page/modificators-page.component';
+import {ExtendsPageComponent} from './extends-page/extends-page.component';
+import {GenericsPageComponent} from './generics-page/generics-page.component';
 
 const routes: Routes = [
   {
@@ -30,8 +32,16 @@ const routes: Routes = [
     component: ClassesPageComponent
   },
   {
-    path: 'modificators',
+    path: 'modifiers',
     component: ModificatorsPageComponent
+  },
+  {
+    path: 'extends',
+    component: ExtendsPageComponent
+  },
+  {
+    path: 'generics',
+    component: GenericsPageComponent
   }
 ];
 

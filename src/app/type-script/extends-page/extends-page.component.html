@@ -1,0 +1,145 @@
+<h3>
+  Наследование. Абстрактные классы
+</h3>
+<p>
+  В TypeScript наследование реализуется с помощью ключевого слова extends
+</p>
+<pre>
+  <code>
+    class User &#123;
+
+      name: string;
+      constructor(userName: string) &#123;
+
+          this.name = userName;
+      &#125;
+      getInfo(): void &#123;
+          console.log("Имя: " + this.name);
+      &#125;
+    &#125;
+
+    class Employee extends User &#123;
+
+    company: string;
+    work(): void &#123;
+            console.log(this.name + " работает в компании " + this.company);
+        &#125;
+    &#125;
+  </code>
+</pre>
+<p>
+  Также можно расширить функциональность класса:
+</p>
+<pre>
+  <code>
+    class User &#123;
+      name: string;
+      constructor(userName: string) &#123;
+          this.name = userName;
+      &#125;
+      getInfo(): void &#123;
+          console.log("Имя: " + this.name);
+      &#125;
+    &#125;
+
+    let Employee = class extends User &#123;
+      company: string;
+      work(): void &#123;
+        console.log(this.name, "работает в компании", this.company);
+      &#125;
+    &#125;
+
+    let sam = new Employee("Sam");
+    sam.company = "Google";
+    sam.work();
+  </code>
+</pre>
+<h4>
+  Переопределение конструктора
+</h4>
+<p>
+  Если подкласс определяет свой конструктор,
+  то в нем должен быть вызван конструктор
+  базового класса с помощью ключевого слова super:
+</p>
+<pre>
+  <code>
+    class User &#123;
+      name: string;
+      constructor(userName: string) &#123;
+        this.name = userName;
+      &#125;
+      getInfo(): void &#123;
+          console.log("Имя: " + this.name);
+      &#125;
+    &#125;
+
+    class Employee extends User &#123;
+      company: string;
+      constructor(userName: string, empCompany: string) &#123;
+        super(userName);
+        this.company = empCompany;
+      &#125;
+      work(): void &#123;
+          console.log(this.name + " работает в компании " + this.company);
+      &#125;
+    &#125;
+    let bill: Employee = new Employee("Bill", "Apple");
+    bill.work();
+  </code>
+</pre>
+<p>
+  С помощью ключевого слова super
+  подкласс может обратиться к функционалу базового класса.
+  В данном случае идет обращение к конструктору класса User,
+  который устанавливает значение свойства name: super(userName)
+</p>
+<h4>
+  Переопределение методов
+</h4>
+<p>
+  Также производные классы могут переопределять методы базовых классов:
+</p>
+<pre>
+  <code>
+    class User &#123;
+      name: string;
+      constructor(userName: string) &#123;
+          this.name = userName;
+      &#125;
+      getInfo(): void &#123;
+          console.log("Имя: " + this.name);
+      &#125;
+    &#125;
+
+    class Employee extends User &#123;
+      company: string;
+      constructor(userName: string, empCompany: string) &#123;
+          super(userName);
+          this.company = empCompany;
+      &#125;
+      getInfo(): void &#123;
+          console.log("Имя: " + this.name);
+          console.log("Работает в компании: " + this.company);
+      &#125;
+    &#125;
+    let bill: Employee = new Employee("Bill", "Apple");
+    bill.getInfo();
+  </code>
+</pre>
+<h4>
+  Абстрактные классы
+</h4>
+<p>
+  Абстрактные классы представляют классы,
+  определенные с ключевым словом abstract.
+  Они во многом похожи на обычные классы за тем исключением,
+  что мы не можем создать напрямую объект
+  абстрактного класса, используя его конструктор.
+</p>
+<pre>
+  <code>
+    abstract class Figure &#123;
+    &#125;
+  </code>
+</pre>
